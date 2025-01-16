@@ -23,7 +23,8 @@ public class Boiler {
     @Column(name = "number", nullable = false)
     private Long number;
 
-    @Column(name = "barcode", nullable = false, unique = true)
+    //@Column(name = "barcode", nullable = false, unique = true)
+    @Column(name = "barcode", nullable = false)
     private Long barcode;
 
     @ManyToOne

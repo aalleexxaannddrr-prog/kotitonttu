@@ -42,8 +42,7 @@ public class UnitController {
         for (Unit unit : units) {
             UnitDto dto = new UnitDto();
             dto.setId(unit.getId());
-            dto.setShortName(unit.getShortName());
-            dto.setLongName(unit.getLongName());
+            dto.setName(unit.getName());
             List<Long> characteristicIds = new ArrayList<>();
 
             for (Characteristic characteristic : unit.getCharacteristics()) {
@@ -65,8 +64,8 @@ public class UnitController {
     })
     public Unit createUnit(@RequestBody CreateUnitDto unitDto) {
         Unit unit = Unit.builder()
-                .shortName(unitDto.getShortName())
-                .longName(unitDto.getLongName())
+                .name(unitDto.getName())
+                //.longName(unitDto.getLongName())
                 .characteristics(new ArrayList<>())
                 .build();
         return unitRepository.save(unit);
@@ -86,12 +85,12 @@ public class UnitController {
         }
 
         Unit unit = optionalUnit.get();
-        if (unitDto.getShortName() != null) {
-            unit.setShortName(unitDto.getShortName());
+        if (unitDto.getName() != null) {
+            unit.setName(unitDto.getName());
         }
-        if (unitDto.getLongName() != null) {
-            unit.setLongName(unitDto.getLongName());
-        }
+//        if (unitDto.getLongName() != null) {
+//            unit.setLongName(unitDto.getLongName());
+//        }
 
         // Добавление характеристики
         if (unitDto.getCharacteristicIds() != null && !unitDto.getCharacteristicIds().isEmpty()) {
@@ -143,8 +142,7 @@ public class UnitController {
         Unit unit = optionalUnit.get();
         UnitDto dto = new UnitDto();
         dto.setId(unit.getId());
-        dto.setShortName(unit.getShortName());
-        dto.setLongName(unit.getLongName());
+        dto.setName(unit.getName());
 
         List<Long> characteristicIds = new ArrayList<>();
         for (Characteristic characteristic : unit.getCharacteristics()) {
@@ -162,9 +160,9 @@ public class UnitController {
     public static class UnitDto {
         private Long id;
         @Schema(example = "м³/ч")
-        private String shortName;
-        @Schema(example = "Кубических метров в час")
-        private String longName;
+        private String name;
+//        @Schema(example = "Кубических метров в час")
+//        private String longName;
         private List<Long> characteristicIds;
 
         // Конструкторы, геттеры и сеттеры
@@ -175,9 +173,9 @@ public class UnitController {
     @NoArgsConstructor
     public static class UpdateUnitDto {
         @Schema(example = "м³/ч", nullable = true)
-        private String shortName;
-        @Schema(example = "Кубических метров в час", nullable = true)
-        private String longName;
+        private String name;
+//        @Schema(example = "Кубических метров в час", nullable = true)
+//        private String longName;
         @Schema(nullable = true)
         private List<Long> characteristicIds;
         // Конструкторы, геттеры и сеттеры
@@ -189,9 +187,6 @@ public class UnitController {
     @NoArgsConstructor
     public static class CreateUnitDto {
         @Schema(example = "м³/ч")
-        private String shortName;
-
-        @Schema(example = "Кубических метров в час")
-        private String longName;
+        private String name;
     }
 }

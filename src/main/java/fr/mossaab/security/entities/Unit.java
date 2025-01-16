@@ -20,8 +20,7 @@ public class Unit {
     @GeneratedValue
     private Long id;
 
-    private String shortName;
-    private String longName;
+    private String name;
     @ManyToMany
     @JoinTable(
             name = "unit_characteristics",

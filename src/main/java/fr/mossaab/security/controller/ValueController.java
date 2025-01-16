@@ -87,10 +87,10 @@ public class ValueController {
     @PostMapping("/add")
     public ResponseEntity<ValueDTO> createValue(@RequestBody CreateValueDTO createValueDTO) {
         Value value = new Value();
-        value.setSValue(createValueDTO.getSValue());
-        value.setDValue(createValueDTO.getDValue());
-        value.setMinValue(createValueDTO.getMinValue());
-        value.setMaxValue(createValueDTO.getMaxValue());
+        value.setValue(createValueDTO.getValue());
+//        value.setDValue(createValueDTO.getDValue());
+//        value.setMinValue(createValueDTO.getMinValue());
+//        value.setMaxValue(createValueDTO.getMaxValue());
         value = valueRepository.save(value);
         return new ResponseEntity<>(new ValueDTO(value), HttpStatus.CREATED);
     }
@@ -112,10 +112,10 @@ public class ValueController {
         Value value = valueOptional.get();
 
         // Обновляем поля, если они предоставлены
-        if (valueDTO.getSValue() != null) value.setSValue(valueDTO.getSValue());
-        if (valueDTO.getDValue() != null) value.setDValue(valueDTO.getDValue());
-        if (valueDTO.getMinValue() != null) value.setMinValue(valueDTO.getMinValue());
-        if (valueDTO.getMaxValue() != null) value.setMaxValue(valueDTO.getMaxValue());
+        if (valueDTO.getValue() != null) value.setValue(valueDTO.getValue());
+//        if (valueDTO.getDValue() != null) value.setDValue(valueDTO.getDValue());
+//        if (valueDTO.getMinValue() != null) value.setMinValue(valueDTO.getMinValue());
+//        if (valueDTO.getMaxValue() != null) value.setMaxValue(valueDTO.getMaxValue());
 
         // Добавляем существующий бойлер в список, если ID предоставлен
         if (boilerId != null) {
@@ -142,13 +142,13 @@ public class ValueController {
     @Setter
     public static class CreateValueDTO {
         @Schema(example = "700х400х299")
-        private String sValue;
-        @Schema(example = "8.0")
-        private Double dValue;
-        @Schema(example = "4.0")
-        private Double minValue;
-        @Schema(example = "10.0")
-        private Double maxValue;
+        private String Value;
+//        @Schema(example = "8.0")
+//        private Double dValue;
+//        @Schema(example = "4.0")
+//        private Double minValue;
+//        @Schema(example = "10.0")
+//        private Double maxValue;
     }
 
     // DTO for Value
@@ -158,23 +158,23 @@ public class ValueController {
         private Long id;
         private Long characteristicId;
         @Schema(example = "700х400х299")
-        private String sValue;
-        @Schema(example = "8.0")
-        private Double dValue;
-        @Schema(example = "4.0")
-        private Double minValue;
-        @Schema(example = "10.0")
-        private Double maxValue;
+        private String Value;
+//        @Schema(example = "8.0")
+//        private Double dValue;
+//        @Schema(example = "4.0")
+//        private Double minValue;
+//        @Schema(example = "10.0")
+//        private Double maxValue;
         private List<Long> boilerIds;
 
         // Constructor to map Value entity to DTO
         public ValueDTO(Value value) {
             this.id = value.getId();
             this.characteristicId = value.getCharacteristic() != null ? value.getCharacteristic().getId() : null;
-            this.sValue = value.getSValue();
-            this.dValue = value.getDValue();
-            this.minValue = value.getMinValue();
-            this.maxValue = value.getMaxValue();
+            this.Value = value.getValue();
+//            this.dValue = value.getDValue();
+//            this.minValue = value.getMinValue();
+//            this.maxValue = value.getMaxValue();
             this.boilerIds = new ArrayList<>();
             for (Boiler boiler : value.getBoilers()) {
                 this.boilerIds.add(boiler.getId());
@@ -188,13 +188,13 @@ public class ValueController {
         @Schema(nullable = true)
         private Long characteristicId;
         @Schema(example = "700х400х299", nullable = true)
-        private String sValue;
-        @Schema(example = "8.0", nullable = true)
-        private Double dValue;
-        @Schema(example = "4.0", nullable = true)
-        private Double minValue;
-        @Schema(example = "10.0", nullable = true)
-        private Double maxValue;
+        private String Value;
+//        @Schema(example = "8.0", nullable = true)
+//        private Double dValue;
+//        @Schema(example = "4.0", nullable = true)
+//        private Double minValue;
+//        @Schema(example = "10.0", nullable = true)
+//        private Double maxValue;
 
     }
 }

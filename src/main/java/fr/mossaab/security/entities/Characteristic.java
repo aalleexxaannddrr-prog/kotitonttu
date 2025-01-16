@@ -26,7 +26,7 @@ public class Characteristic {
     @JsonIgnore
     private List<Unit> units = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "characteristics")
     @JsonIgnore
     private List<Series> series =  new ArrayList<>();
 

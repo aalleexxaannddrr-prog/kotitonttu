@@ -23,6 +23,7 @@ public class Series {
     private String prefix;     // Префикс, например, "ST"
     private int startRange;    // Начало диапазона, например, 20
     private int endRange;      // Конец диапазона, например, 30
+    @Column(nullable = true)
     private String suffix;     // Суффикс, например, "M"
 
     private String description;
@@ -38,7 +39,12 @@ public class Series {
     @ManyToMany(mappedBy = "seriesList")
     private List<ServiceCenter> serviceCenters = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "series")
+    @ManyToMany
+    @JoinTable(
+            name = "series_characteristics", // Имя промежуточной таблицы
+            joinColumns = @JoinColumn(name = "series_id"),
+            inverseJoinColumns = @JoinColumn(name = "characteristic_id")
+    )
     private List<Characteristic> characteristics = new ArrayList<>();
 
     @ManyToMany(mappedBy = "series")
@@ -58,6 +64,7 @@ public class Series {
     @OneToMany(mappedBy = "series", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Error> errors = new ArrayList<>();
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "series_passport_titles", // Имя промежуточной таблицы

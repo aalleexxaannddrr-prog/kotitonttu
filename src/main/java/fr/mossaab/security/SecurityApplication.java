@@ -1,6 +1,7 @@
 package fr.mossaab.security;
 
-//import fr.mossaab.security.service.init.CreateServiceCentreService;
+
+import fr.mossaab.security.service.init.ParserService;
 import fr.mossaab.security.service.init.UserCreateService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +13,12 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class SecurityApplication {
-    private boolean SchemaIsEmpty = false;
-//    @Autowired
-//    private BoilerCreateService boilerCreateService;
-//    @Autowired
-//    private PassportCreateService passportService;
-//    @Autowired
-//    private DocumentCreateService documentService;
-//    @Autowired
-//    private CreateServiceCentreService createServiceCentreService;
+
+
     @Autowired
     private UserCreateService userCreationService;
-
+    @Autowired
+    private ParserService typeParserService;
     public static void main(String[] args) {
 
         SpringApplication.run(SecurityApplication.class, args);
@@ -31,12 +26,8 @@ public class SecurityApplication {
     @Transactional
     @PostConstruct
     public void createSamplePresentation() throws IOException {
-//        boilerCreateService.CreateBoilers();
-//        passportService.createAndSavePassportData();
-//        documentService.createAndSaveDocumentData();
-        //createServiceCentreService.CreateServiceCentre();
+        typeParserService.parseAndSaveTypes();
         userCreationService.createUsers();
-        System.out.println("Пример презентации с файлами успешно создан.");
     }
 
 

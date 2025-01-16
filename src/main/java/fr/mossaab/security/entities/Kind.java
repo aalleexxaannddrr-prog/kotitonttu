@@ -21,7 +21,6 @@ public class Kind {
     private Long id;
 
     private String title;
-    private String description;
 
     @ManyToOne
     @JsonIgnore

@@ -62,7 +62,7 @@ public class KindController {
     public ResponseEntity<KindDto> createKind(@RequestBody CreateKindDto createKindDto) {
         Kind kind = new Kind();
         kind.setTitle(createKindDto.getTitle());
-        kind.setDescription(createKindDto.getDescription());
+        //kind.setDescription(createKindDto.getDescription());
         kind = kindRepository.save(kind);
 
         KindDto kindDto = convertToDto(kind);
@@ -82,9 +82,9 @@ public class KindController {
             if (updateKindDto.getTitle() != null) {
                 kind.setTitle(updateKindDto.getTitle());
             }
-            if (updateKindDto.getDescription() != null) {
-                kind.setDescription(updateKindDto.getDescription());
-            }
+//            if (updateKindDto.getDescription() != null) {
+//                kind.setDescription(updateKindDto.getDescription());
+//            }
             if (updateKindDto.getTypeId() != null) {
                 Optional<Type> typeOptional = typeRepository.findById(updateKindDto.getTypeId());
                 if (typeOptional.isPresent()) {
@@ -150,7 +150,7 @@ public class KindController {
         return new KindDto(
                 kind.getId(),
                 kind.getTitle(),
-                kind.getDescription(),
+                //kind.getDescription(),
                 kind.getType() != null ? kind.getType().getId() : null,
                 seriesIds
         );
@@ -163,8 +163,8 @@ public class KindController {
         private Long id;
         @Schema(example = "Одноконтурные")
         private String title;
-        @Schema(example = "(с закрытой камерой) без трёхходового клапана")
-        private String description;
+//        @Schema(example = "(с закрытой камерой) без трёхходового клапана")
+//        private String description;
         private Long typeId;
         private List<Long> seriesIds;
     }
