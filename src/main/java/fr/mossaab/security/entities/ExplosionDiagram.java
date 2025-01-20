@@ -25,12 +25,12 @@ public class ExplosionDiagram {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToOne(mappedBy = "explosionDiagram", cascade = CascadeType.ALL)
+    private Series series;
     /**
      * Список запчастей, относящихся к данной взрывной схеме.
      */
-    @OneToOne(mappedBy = "explosionDiagram", cascade = CascadeType.ALL)
-    private Series series;
-
     @OneToMany(mappedBy = "explosionDiagram", cascade = CascadeType.ALL)
     private List<SparePart> spareParts;
 

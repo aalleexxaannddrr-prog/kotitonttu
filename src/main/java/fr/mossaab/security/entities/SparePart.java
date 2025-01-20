@@ -83,6 +83,7 @@ public class SparePart {
     @ManyToOne
     @JoinColumn(name = "explosion_diagram_id")
     private ExplosionDiagram explosionDiagram;
+    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "spare_part_boiler",
