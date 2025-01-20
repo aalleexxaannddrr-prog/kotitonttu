@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class StorageService {
-    private static final String BASE_PATH = "C:\\Users\\Admin\\Desktop\\storage\\";
+    private static final String BASE_PATH = "/var/www/vuary/";
     private FileDataRepository fileDataRepository;
 
     /**
@@ -40,7 +40,7 @@ public class StorageService {
         FileData.FileDataBuilder builder = FileData.builder();
         builder.name(name)
                 .type("application/pdf")
-                .filePath(BASE_PATH + "explosion_diagram_files\\" + name)
+                .filePath(BASE_PATH + "explosion_diagram_files/" + name)
                 .explosionDiagram(explosionDiagram); // привязка к ExplosionDiagram
 
         // Копируем файл в целевую папку
@@ -70,7 +70,7 @@ public class StorageService {
         builder
                 .name(name)
                 .type("image/png") // или получайте динамически MIME-тип, если нужно
-                .filePath(BASE_PATH + "spare_part_files\\" + name)
+                .filePath(BASE_PATH + "spare_part_files/" + name)
                 .sparePart(sparePart);
 
         // 3. Копируем файл в нужную папку
@@ -102,9 +102,9 @@ public class StorageService {
                 }
                 builder.name(name + ".pdf");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "explosion_diagram_files\\" + name + ".pdf");
+                builder.filePath(BASE_PATH + "explosion_diagram_files/" + name + ".pdf");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "explosion_diagram_files\\" + name + ".pdf"));
+                    file.transferTo(new File(BASE_PATH + "explosion_diagram_files/" + name + ".pdf"));
                 }
                 builder.explosionDiagram(explosionDiagram);
                 break;
@@ -115,9 +115,9 @@ public class StorageService {
                 }
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "advantage_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "advantage_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "advantage_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "advantage_files/" + name + ".png"));
                 }
                 builder.advantage(advantage);
                 break;
@@ -128,9 +128,9 @@ public class StorageService {
                 }
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "user_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "user_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "user_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "user_files/" + name + ".png"));
                 }
                 builder.user(user);
                 break;
@@ -138,9 +138,9 @@ public class StorageService {
                 BonusRequest bonusRequest = (BonusRequest) relatedEntity;
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "bonus_request_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "bonus_request_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "bonus_request_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "bonus_request_files/" + name + ".png"));
                 }
                 builder.bonusRequest(bonusRequest);
                 break;
@@ -148,9 +148,9 @@ public class StorageService {
                 DocumentVerificationRequest documentVerification = (DocumentVerificationRequest) relatedEntity;
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "document_verification_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "document_verification_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "document_verification_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "document_verification_files/" + name + ".png"));
                 }
                 builder.documentVerification(documentVerification);
                 break;
@@ -158,18 +158,18 @@ public class StorageService {
                 SparePart sparePart = (SparePart) relatedEntity;
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "spare_part_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "spare_part_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "spare_part_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "spare_part_files/" + name + ".png"));
                 }
                 builder.sparePart(sparePart);
                 break;
             case "BoilerSeriesPassport":
                 builder.name(name + ".pdf");
                 builder.type("application/pdf");
-                builder.filePath(BASE_PATH + "boiler_series_passport_files\\" + name + ".pdf");
+                builder.filePath(BASE_PATH + "boiler_series_passport_files/" + name + ".pdf");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "boiler_series_passport_files\\" + name + ".pdf"));
+                    file.transferTo(new File(BASE_PATH + "boiler_series_passport_files/" + name + ".pdf"));
                 }
                 if (relatedEntity instanceof BoilerSeriesPassport) {
                     BoilerSeriesPassport boilerSeriesPassport = (BoilerSeriesPassport) relatedEntity;
@@ -180,9 +180,9 @@ public class StorageService {
                 Series series = (Series) relatedEntity;
                 builder.name(name + ".png");
                 builder.type("image/png");
-                builder.filePath(BASE_PATH + "series_files\\" + name + ".png");
+                builder.filePath(BASE_PATH + "series_files/" + name + ".png");
                 if (file != null && !file.isEmpty()) {
-                    file.transferTo(new File(BASE_PATH + "series_files\\" + name + ".png"));
+                    file.transferTo(new File(BASE_PATH + "series_files/" + name + ".png"));
                 }
                 builder.series(series);
                 break;
@@ -211,7 +211,7 @@ public class StorageService {
         FileData.FileDataBuilder builder = FileData.builder();
         builder.name(name)
                 .type("image/png")  // или определять динамически, если нужно
-                .filePath(BASE_PATH + "series_files\\" + name)
+                .filePath(BASE_PATH + "series_files/" + name)
                 .series(series);
 
         // Фактически копируем файл в нужную папку
@@ -229,9 +229,9 @@ public class StorageService {
         FileData.FileDataBuilder builder = FileData.builder();
         builder.name(name + ".png");
         builder.type("image/png");
-        builder.filePath(BASE_PATH + "explosion_diagram_files\\" + name + ".png");
+        builder.filePath(BASE_PATH + "explosion_diagram_files/" + name + ".png");
         if (file != null && !file.isEmpty()) {
-            file.transferTo(new File(BASE_PATH + "explosion_diagram_files\\" + name + ".png"));
+            file.transferTo(new File(BASE_PATH + "explosion_diagram_files/" + name + ".png"));
         }
         FileData fileData = builder.build();
         fileData = fileDataRepository.save(fileData);
@@ -260,7 +260,7 @@ public class StorageService {
         FileData.FileDataBuilder builder = FileData.builder();
         builder.name(name)
                 .type("application/pdf")
-                .filePath(BASE_PATH + "boiler_series_passport_files\\" + name)
+                .filePath(BASE_PATH + "boiler_series_passport_files/" + name)
                 .boilerSeriesPassport(passport); // связка с BoilerSeriesPassport
 
         // Копируем файл в нужную папку
@@ -295,7 +295,7 @@ public class StorageService {
         FileData.FileDataBuilder builder = FileData.builder();
         builder.name(name)
                 .type("image/png")
-                .filePath(BASE_PATH + "advantage_files\\" + name)
+                .filePath(BASE_PATH + "advantage_files/" + name)
                 .advantage(advantage);  // Привязываем к Advantage
 
         // Копируем файл в нужную папку
