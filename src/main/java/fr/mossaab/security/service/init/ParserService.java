@@ -532,7 +532,7 @@ public class ParserService {
 
     private void parseExplosionDiagram(File seriesDir, Series series) {
         // Ищем файл "взрыв-схема.pdf" в текущей директории серии
-        File explosionFile = new File(seriesDir, "взрыв-схема.pdf");
+        File explosionFile = new File(seriesDir, "Взрыв-схема.pdf");
         if (!explosionFile.exists()) {
             // Если файла нет — просто выходим (не ломаем логику)
             logger.info("Файл взрыв-схема.pdf не найден для серии {}", series.getDescription());
