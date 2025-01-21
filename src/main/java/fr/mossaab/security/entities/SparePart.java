@@ -28,7 +28,8 @@ public class SparePart {
     /**
      * Артикул запчасти.
      */
-    @Column(nullable = false, unique = true)
+    //@Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String articleNumber;
 
     /**
