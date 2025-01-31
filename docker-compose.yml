@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/vuary?serverTimezone=Europe/Moscow
+      SPRING_DATASOURCE_USERNAME: kotitonttu
+      SPRING_DATASOURCE_PASSWORD: Eq13034513!
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+      # Остальные переменные (SMTP, JWT и т.д.) можно добавить здесь
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: vuary
+      MYSQL_USER: kotitonttu
+      MYSQL_PASSWORD: Eq13034513!
+      MYSQL_ROOT_PASSWORD: Eq13034513! # Пароль для root-пользователя
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
