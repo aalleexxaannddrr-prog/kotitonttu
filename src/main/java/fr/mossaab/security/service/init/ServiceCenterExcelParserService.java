@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ServiceCenterExcelParserService {
 
     // Путь к Excel-файлу
-    private static final String EXCEL_FILE_PATH = "/var/www/Реестр сервисных центров.xlsx";
+    private static final String EXCEL_FILE_PATH = "/app/uploads/Реестр сервисных центров.xlsx";
 
     private final ServiceCenterRepository serviceCenterRepository;
 
