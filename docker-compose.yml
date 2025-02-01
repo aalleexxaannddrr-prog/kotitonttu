@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "8080:8080"
+    volumes:
+      - /var/www:/app/uploads  # Монтирование директории с файлами
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/vuary?serverTimezone=Europe/Moscow
       SPRING_DATASOURCE_USERNAME: kotitonttu
