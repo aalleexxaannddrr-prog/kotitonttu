@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class StorageService {
-    private static final String BASE_PATH = "/var/www/vuary/";
+    private static final String BASE_PATH = "/app/uploads/vuary/";
     private FileDataRepository fileDataRepository;
 
     /**
