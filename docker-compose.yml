@@ -18,7 +18,7 @@ services:
       MYSQL_DATABASE: vuary
       MYSQL_USER: kotitonttu
       MYSQL_PASSWORD: Eq13034513!
-      MYSQL_ROOT_PASSWORD: Eq13034513! # Пароль для root-пользователя
+      MYSQL_ROOT_PASSWORD: adminQq13037613! # Пароль для root-пользователя
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
