@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 @Transactional
 public class ParserService {
 
-    private static final String FOLDER_PATH = "/var/www/system_initialization";
+    private static final String FOLDER_PATH = "/app/uploads/system_initialization";
     private static final Logger logger = LoggerFactory.getLogger(ParserService.class);
 
     @Autowired
