@@ -21,6 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: adminQq13037613! # Пароль для root-пользователя
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./logs:/app/logs
     ports:
       - "3306:3306"
     command: --default-authentication-plugin=mysql_native_password
