@@ -47,4 +47,4 @@ services:
       - ./logs:/app/logs
     command: --default-authentication-plugin=mysql_native_password
 volumes:
-  db_data:
+  mysql_data:
